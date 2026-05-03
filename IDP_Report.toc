@@ -1,0 +1,42 @@
+\contentsline {chapter}{Abstract}{i}{chapter*.1}%
+\contentsline {chapter}{List of Figures}{iv}{chapter*.2}%
+\contentsline {chapter}{List of Tables}{v}{chapter*.3}%
+\contentsline {chapter}{\numberline {1}Introduction to Analog and Digital converters}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Introduction}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Literature Review}{3}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Sample}{3}{subsection.1.2.1}%
+\contentsline {subsubsection}{Review types}{3}{section*.5}%
+\contentsline {subsubsection}{Process and product}{3}{section*.6}%
+\contentsline {subsubsection}{\textbf {Page limitation}}{4}{section*.7}%
+\contentsline {subsubsection}{\textbf {Plagiarism}}{4}{section*.8}%
+\contentsline {subsubsection}{How to add Reference}{4}{section*.9}%
+\contentsline {section}{\numberline {1.3}Motivation}{5}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Problem statement}{5}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Objectives}{5}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Brief Methodology of the project}{5}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Assumptions made / Constraints of the project}{5}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Organization of the report}{5}{section.1.8}%
+\contentsline {chapter}{\numberline {2}Theory and Fundamentals of Analog to Digital converter}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Contents of this chapter}{8}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Contents of this chapter}{8}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Contents of this chapter}{8}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Contents of this chapter}{8}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Use of Acronyms and Glossaries}{8}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Analysis/Design of Pipelined Analog to Digital converter}{10}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Contents of this Chapter}{11}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Paraphrasing}{11}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Quotations}{12}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Implementation of Pipelined Analog to Digital converter}{13}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Contents of this chapter}{14}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Results \& Discussions}{15}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Contents of this chapter}{16}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Tables in thesis}{16}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Math equation in thesis}{17}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Interpretation of results}{18}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Conclusion and Future Scope}{19}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Conclusion}{20}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Future Scope}{20}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Learning Outcomes of the Project}{20}{section.6.3}%
+\contentsline {chapter}{\numberline {A}Code}{21}{appendix.A}%
+\contentsline {section}{\numberline {A.1}First Appendix}{22}{section.A.1}%
+\contentsline {chapter}{Bibliography}{23}{lstnumber.-1.17}%
