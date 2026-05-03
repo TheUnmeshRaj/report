@@ -33,6 +33,20 @@ Raw audio signals are transformed into feature representations before being proc
 
 Whisper uses log-Mel spectrogram features as input, enabling efficient learning of temporal and frequency patterns in speech.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{Figures/waveform_vs_spectrogram.png}
+	\caption{Comparison of Speech Waveform and Spectrogram Representations}
+	\label{fig:waveform_spectrogram}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{Figures/mel_spectrogram_example.png}
+	\caption{Mel Spectrogram Example: Frequency-Time Representation of Speech}
+	\label{fig:mel_spectrogram}
+\end{figure}
+
 \section{Data Augmentation and Synthetic Speech}
 
 Due to limited availability of dysarthric speech datasets, data augmentation is widely used to improve model robustness. Techniques include:
@@ -50,6 +64,13 @@ Synthetic speech generation using Text-to-Speech (TTS) models and voice conversi
 Transformer-based models have become the standard for speech recognition. Whisper employs an encoder-decoder transformer architecture for sequence-to-sequence learning.
 
 Fine-tuning adapts a pre-trained model to a specific domain. Parameter-efficient techniques such as Low-Rank Adaptation (LoRA) allow fine-tuning with reduced computational cost by updating only a subset of model parameters.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{Chapter2/Figures/whisper_architecture.png}
+	\caption{Whisper Encoder-Decoder Transformer Architecture for End-to-End ASR}
+	\label{fig:whisper_arch}
+\end{figure}
 
 \section{Evaluation Metrics}
 
