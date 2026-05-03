@@ -1,110 +1,113 @@
 \chapter{Results \& Discussions}
-Every chapter should start with an introduction paragraph. This paragraph should brief about the flow of the chapter. This introduction can be limited within 4 to 5 sentences. The chapter heading should be appropriately modified (a sample heading is shown for this chapter).But don't start the introduction paragraph in the chapters like "This chapter deals with....". Instead you should bring in the highlights of the chapter in the introduction paragraph.
+
+Significant improvements in speech recognition performance are observed through systematic enhancements in data processing, model adaptation, and post-processing techniques. The evaluation compares baseline models with fine-tuned and LLM-enhanced systems across multiple datasets. Both simulation and experimental results highlight the effectiveness of augmentation and parameter-efficient fine-tuning strategies. Quantitative metrics such as Word Error Rate (WER) are used to assess performance improvements. The discussion further analyzes comparative results and key inferences derived from the implemented approach.
+
 \section{Contents of this chapter}
-All the results obtained for your objectives should be discussed in this chapter. This chapter should contain the following sections as per the project.
+All the results obtained for the objectives are discussed in this chapter. This chapter contains:
 \begin{enumerate}
 \item Simulation results
 \item Experimental results
-\item Performance Comparison
+\item Performance comparison
 \item Inferences drawn from the results obtained
 \end{enumerate}
-All the figures should be properly explained by bringing the scenarios of the design done in the project. A detailed discussion of results obtained should be done in this chapter.
 
-\section{Tables in thesis}
-\begin{itemize}
-	\item All Table Caption should be in Sentence Case, TNR 10 Pt. It should be of the Format:
-	\begin{itemize}
-		\item Table 1.1 Results of the experiment ….(Centered)
-	\end{itemize}
-	\item It should be cited as Table 1.1.
-	\item Caption should appear above the Table.
-	\item Table Header and the entries should be of Font TNR 10 Pt, Justified.
-	\item For wider Table, the page orientation can be Landscape.
-	\item For Larger Table, it can run to pages and the header should be repeated for each page of the Table.
-	\item Table must be adjusted to fit in the page and no single row is left out for a new page.	
-\end{itemize}
+\section{Simulation Results}
+The initial evaluation of the pre-trained Whisper-base model on the TORGO dataset provides a baseline for comparison. The model shows higher error rates for dysarthric speech compared to healthy speech, indicating the need for adaptation techniques.
 
-Sample Table \ref{c5:tab1} is given below for your reference,
+\section{Experimental Results}
+After applying augmentation, synthetic data generation, and LoRA-based fine-tuning, the model performance improved significantly. The fine-tuned Whisper-base model achieved a WER of 16.12\%, which is a substantial reduction compared to the baseline.
+
+\section{Performance Comparison}
 
 \begin{table}[htb]
+\centering
 \fontsize{10}{12}\selectfont
-\caption{Country List}
-\label{c5:tab1}
-\begin{tabular}{|p{3cm}|c|c|c|}
-	%\hline
-	%\multicolumn{4}{|c|}{Country List} \\
-	\hline
-	\textbf{Country Name     or Area Name}& \textbf {ISO ALPHA 2 Code} & \textbf {ISO ALPHA 3 Code} & \textbf{ISO numeric Code}\\
-	\hline
-	\textbf{Afghanistan}   & AF    & AFG &   004\\\hline
-	\textbf{Aland Islands}&   AX  & ALA   & 248\\\hline
-	\textbf{Albania} & AL & ALB&  008\\\hline
-	\textbf{Algeria}    &DZ & DZA&  012\\\hline
-	\textbf{American Samoa}&   AS  & ASM&016\\\hline
-	\textbf{Andorra}& AD  & AND   & 020\\\hline
-	\textbf{Angola}& AO  & AGO& 024\\
-	\hline
+\caption{WER comparison of baseline and fine-tuned model}
+\label{c5:tab2}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Model} & \textbf{WER} \\
+\hline
+Baseline Whisper-base & 0.3215 \\
+\hline
+Fine-tuned Whisper-base (LoRA) & 0.1612 \\
+\hline
 \end{tabular}
 \end{table}
 
-%\begin{table}[htp]
-%\fontsize{10}{12}\selectfont
-%\centering
-%\caption{Data units, sources, and dates} \label{c5:tab2}
-%\begin{tabular}{| *4{>{\arraybackslash}m{1in}|} @{}m{0pt}@{}}
-%	\hline
-%	\textbf{Variable} & \textbf{Dates} & \textbf{Units} &
-%	\textbf{Source}  &\\[2ex] 
-%	\hline
-%	\textbf{Nominal Physical Capital Stock} & 1950-1990 & Billions
-%			US\$ & Nehru and Dhareshwar (1993) &\\[0ex]
-%	\hline
-%	\textbf{Total Population} & 1950-1990 & Billions & Nehru and
-%			Dhareshwar (1993) &\\[0ex]
-%	\hline
-%	\textbf{Nominal GDP} & 1950-1990 & Billions  US\$ & PWT &\\[5ex]
-%	\hline
-%	\textbf{Real GDP per capita} & 1950-1990 & 2005 US\$ per capita & PWT &\\[5ex]
-%	\hline
-%\end{tabular}
-%\end{table}
+Table \ref{c5:tab2} shows the comparison between the baseline and fine-tuned model. The reduction in WER demonstrates the effectiveness of dataset augmentation and parameter-efficient fine-tuning.
 
-\section{Math equation in thesis}
-All equation should be written using equation editor or using an equivalent tool.
+\section{Comparison with Existing Models}
+
+\begin{table}[htb]
+\centering
+\fontsize{10}{12}\selectfont
+\caption{WER results for different ASR architectures on TORGO and UASpeech}
+\label{c5:tab3}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Model} & \textbf{TORGO} & \textbf{UASpeech} \\
+\hline
+\multicolumn{3}{|c|}{\textbf{Baseline Models}} \\
+\hline
+Wav2Vec-CTC & 0.53 & 0.54 \\
+Hubert-CTC & 0.50 & 0.54 \\
+Whisper & 0.38 & 0.40 \\
+\hline
+\multicolumn{3}{|c|}{\textbf{LLM-Enhanced Decoding Models}} \\
+\hline
+Wav2Vec-GPT & 0.59 & 0.53 \\
+Hubert-GPT & 0.55 & 0.50 \\
+Wav2Vec-BART & 0.32 & 0.35 \\
+Hubert-BART & 0.30 & 0.32 \\
+Whisper-Vicuna & \textbf{0.21} & \textbf{0.26} \\
+\hline
+\end{tabular}
+\end{table}
+
+Table \ref{c5:tab3} illustrates the performance of various ASR architectures. The results indicate that integrating language models significantly improves transcription accuracy. The Whisper-based approaches outperform other baseline models, and LLM-enhanced decoding further reduces the WER.
+
+\section{Mathematical Formulation}
+
+The Word Error Rate (WER) used for evaluation is defined as:
+
+\begin{equation}
+\label{eqn:wer}
+WER = \frac{S + D + I}{N}
+\end{equation}
+
+where:
 \begin{itemize}
-	\item Equations should be numbered as : 1.1, 1.2 ...
-	\item Equation should be Centered, 12 Pt, TNR. 
-	\item Equation number should be right Justified
-	\item It should be cited as Eqn. 1.1.
-   \item If the sentence starts by citing an equation, then it should be written as Equation 1.1 For example, Equation 5.1 states the Pythagoras theorem.
-
-	
+\item $S$ = Number of substitutions
+\item $D$ = Number of deletions
+\item $I$ = Number of insertions
+\item $N$ = Total number of words in the reference
 \end{itemize}
 
-For example in Eqn. \ref{eqn:pythag thm}, The well known Pythagorean theorem $x^2 + y^2 = z^2$ was 
-proved to be invalid for other exponents. 
-Meaning the next equation has no integer solutions:
+Equation \ref{eqn:wer} quantifies the transcription error by comparing predicted text with ground truth.
+
+The Low-Rank Adaptation (LoRA) method used for fine-tuning modifies weight matrices as:
 
 \begin{equation}
-\label{eqn:pythag thm}
-	x^n + y^n = z^n
+\label{eqn:lora}
+W' = W + \Delta W = W + BA
 \end{equation}
 
-The mass-energy equivalence is described by the famous equation in Eqn. \ref{eqn:mass-eng}
-\begin{equation}
-\label{eqn:mass-eng}
-	E=mc^2
-\end{equation}
+where:
+\begin{itemize}
+\item $W$ = Original weight matrix
+\item $B$ and $A$ = Low-rank matrices
+\item $\Delta W$ = Low-rank update
+\end{itemize}
 
-discovered in 1905 by Albert Einstein. 
+Equation \ref{eqn:lora} enables efficient training by updating only a small subset of parameters.
 
-\section{Interpretation of results}
+\section{Interpretation of Results}
 
-\vspace{2.5cm}
+The results clearly indicate that baseline models struggle with dysarthric speech due to high variability and pronunciation inconsistencies. Data augmentation and synthetic data generation improve robustness by exposing the model to diverse speech patterns. Fine-tuning using LoRA significantly enhances performance while maintaining computational efficiency.
 
- \textbf{The chapters should not end with figures, instead bring the paragraph explaining about the figure at the end followed by a summary paragraph.}
+Furthermore, integrating an LLM layer improves grammatical correctness and contextual understanding, leading to better readability and usability of transcriptions. The comparison with existing architectures shows that combining ASR models with language models yields superior performance.
 
-After elaborating the various sections of the chapter (From Chapter 2 onwards), a summary paragraph should be written discussing the highlights of that particular chapter. This summary paragraph should not be numbered separately. This paragraph should connect the present chapter to the next chapter.
+Overall, the proposed approach achieves a substantial reduction in WER and demonstrates effectiveness in handling challenging speech scenarios.
 
-
-
+The results highlight the importance of combining data-centric and model-centric techniques for improving speech recognition systems. These findings provide a strong foundation for further optimization and real-world deployment, which will be explored in the subsequent chapter.
