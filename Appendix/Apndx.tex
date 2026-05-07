@@ -1,3 +1,9 @@
+\chapter{Code}
+
+\section{Dataset Generation using XTTS-v2}
+
+The following Python script was used for generating the speech dataset using the XTTS-v2 multilingual text-to-speech model. The implementation mounts Google Drive, loads reference speaker audio samples, synthesizes speech samples from text prompts, and stores the generated dataset for further processing.
+
 \begin{tcblisting}{listing only,colback=gray!10!white, breakable, boxsep=0pt,top=1mm,bottom=1mm,left=1mm,right=1mm,
 listing options={
 language=Python,
@@ -40,7 +46,7 @@ with open(TEXT_FILE_PATH, "r", encoding="utf-8") as f:
         for line in f.readlines()
     ][:1000]
 
-# Process only male speakers
+# Process male speaker samples
 gender_targets = ['m']
 
 for gender in gender_targets:
