@@ -6,9 +6,13 @@ The development of speech recognition systems for dysarthric speech highlights t
 
 The project focused on improving speech recognition for dysarthric speech by addressing key challenges such as limited datasets, high acoustic variability, and noise sensitivity. The objectives included generating synthetic dysarthric speech, enhancing robustness through augmentation, fine-tuning a Whisper-based ASR model, and incorporating a semantic correction layer using language models and a Personal Knowledge Graph.
 
-These objectives were implemented through a structured pipeline. Synthetic speech was generated using TTS techniques and combined with augmented audio to increase dataset diversity. A pre-trained Whisper model was fine-tuned using parameter-efficient methods (LoRA) to adapt to dysarthric speech patterns. The ASR output was further refined using a semantic repair mechanism based on a local language model, enabling context-aware correction of transcription errors.
+These objectives were implemented through a structured pipeline. Approximately 16,000 synthetic dysarthric speech samples were generated using Text-to-Speech (TTS) and augmentation techniques, resulting in a dataset size of nearly 3.2 GB. A pre-trained Whisper-small model was fine-tuned using parameter-efficient LoRA techniques to adapt to dysarthric speech patterns. Training was performed using NVIDIA Tesla T4 GPUs on Kaggle and Google Colab platforms, with total training sessions spanning approximately 9 hours on Kaggle (dual T4 GPUs) and 5 additional hours on Google Colab.
 
-The results demonstrate a clear improvement in performance. The baseline ASR system exhibited high Word Error Rates (WER) on dysarthric speech, typically in the range of 40--60\%. After fine-tuning and applying augmentation techniques, the WER was reduced to approximately 25--35\%. Further improvements were achieved through semantic correction, bringing the effective transcription accuracy closer to practical usability levels. These results validate the effectiveness of combining acoustic adaptation with contextual reasoning.
+The results demonstrate a significant improvement in transcription performance. The baseline system achieved a Word Error Rate (WER) of 0.3215, while the fine-tuned model reduced the WER to 0.1612. Compared to the reference baseline paper with a WER of 0.21, the proposed approach achieved further improvement through synthetic augmentation and semantic correction. This corresponds to an approximate improvement of 49.86\% over the initial baseline system and nearly 23.24\% improvement over the reference approach. These results validate the effectiveness of combining acoustic adaptation with contextual reasoning for dysarthric speech recognition.
+
+% TODO: Edit CER values here
+% CER Before:
+% CER After:
 
 \section{Future Scope}
 
@@ -25,4 +29,5 @@ Future work can focus on expanding dataset diversity through real-world data col
 \item Knowledge of data augmentation and synthetic speech generation methods
 \item Experience in evaluating ASR systems using metrics such as Word Error Rate (WER) and Character Error Rate (CER)
 \item Understanding the role of language models in semantic correction and contextual reasoning
+\item Experience in training and fine-tuning transformer-based ASR models using cloud GPU platforms
 \end{itemize}

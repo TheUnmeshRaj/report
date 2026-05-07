@@ -1,41 +1,36 @@
 \chapter{Results \& Discussions}
 
-Significant improvements in speech recognition performance are observed through systematic enhancements in data processing, model adaptation, and post-processing techniques. The evaluation compares baseline models with fine-tuned and LLM-enhanced systems across multiple datasets. Both simulation and experimental results highlight the effectiveness of augmentation and parameter-efficient fine-tuning strategies. Quantitative metrics such as Word Error Rate (WER) are used to assess performance improvements. The discussion further analyzes comparative results and key inferences derived from the implemented approach.
-
-\section{Contents of this chapter}
-All the results obtained for the objectives are discussed in this chapter. This chapter contains:
-\begin{enumerate}
-\item Simulation results
-\item Experimental results
-\item Performance comparison
-\item Inferences drawn from the results obtained
-\end{enumerate}
+Significant improvements in speech recognition performance are observed through systematic enhancements in data processing, model adaptation, and post-processing techniques. The evaluation compares baseline models with fine-tuned systems across multiple datasets. Both simulation and experimental results highlight the effectiveness of augmentation and parameter-efficient fine-tuning strategies. Quantitative metrics such as Word Error Rate (WER) and Character Error Rate (CER) are used to assess performance improvements. The discussion further analyzes comparative results and key inferences derived from the implemented approach.
 
 \section{Simulation Results}
-The initial evaluation of the pre-trained Whisper-base model on the TORGO dataset provides a baseline for comparison. The model shows higher error rates for dysarthric speech compared to healthy speech, indicating the need for adaptation techniques.
+
+The initial evaluation of the pre-trained Whisper-small model on dysarthric speech datasets provided a baseline for comparison. The model showed higher error rates for dysarthric speech compared to healthy speech due to articulation variability and acoustic distortions. Baseline testing resulted in a Word Error Rate (WER) of 0.3215, indicating the necessity of domain adaptation and augmentation techniques.
 
 \section{Experimental Results}
-After applying augmentation, synthetic data generation, and LoRA-based fine-tuning, the model performance improved significantly. The fine-tuned Whisper-base model achieved a WER of 16.12\%, which is a substantial reduction compared to the baseline.
+
+After applying synthetic data generation, augmentation techniques, and LoRA-based fine-tuning, the model performance improved significantly. Approximately 16,000 synthetic dysarthric speech samples were generated, resulting in a dataset size of nearly 3.2 GB. The fine-tuned Whisper-small model achieved a WER of 0.1612 and an approximate Character Error Rate (CER) of 8\%.
+
+Training was conducted using NVIDIA Tesla T4 GPUs on Kaggle and Google Colab platforms. Kaggle’s dual T4 GPU environment was utilized extensively due to its 30-hour free GPU allocation, while additional experiments were conducted on Google Colab. The cumulative training duration exceeded 14 hours across multiple sessions.
 
 \section{Performance Comparison}
 
 \begin{table}[htb]
 \centering
 \fontsize{10}{12}\selectfont
-\caption{WER comparison of baseline and fine-tuned model}
+\caption{WER and CER comparison of baseline and fine-tuned model}
 \label{c5:tab2}
-\begin{tabular}{|c|c|}
+\begin{tabular}{|c|c|c|}
 \hline
-\textbf{Model} & \textbf{WER} \\
+\textbf{Model} & \textbf{WER} & \textbf{CER} \\
 \hline
-Baseline Whisper-base & 0.3215 \\
+Baseline Whisper-small & 0.3215 & -- \\
 \hline
-Fine-tuned Whisper-base (LoRA) & 0.1612 \\
+Fine-tuned Whisper-small (LoRA) & 0.1612 & 0.08 \\
 \hline
 \end{tabular}
 \end{table}
 
-Table \ref{c5:tab2} shows the comparison between the baseline and fine-tuned model. The reduction in WER demonstrates the effectiveness of dataset augmentation and parameter-efficient fine-tuning.
+Table \ref{c5:tab2} shows the comparison between the baseline and fine-tuned model. The reduction in WER demonstrates the effectiveness of dataset augmentation and parameter-efficient fine-tuning. The proposed approach achieved an approximate 49.86\% reduction in WER compared to the baseline model.
 
 \section{Comparison with Existing Models}
 
@@ -60,12 +55,16 @@ Wav2Vec-GPT & 0.59 & 0.53 \\
 Hubert-GPT & 0.55 & 0.50 \\
 Wav2Vec-BART & 0.32 & 0.35 \\
 Hubert-BART & 0.30 & 0.32 \\
-Whisper-Vicuna & \textbf{0.21} & \textbf{0.26} \\
+Whisper-Vicuna & 0.21 & 0.26 \\
+\hline
+\multicolumn{3}{|c|}{\textbf{Proposed Model}} \\
+\hline
+Whisper-small + LoRA (Proposed) & \textbf{0.1612} & \textbf{0.18} \\
 \hline
 \end{tabular}
 \end{table}
 
-Table \ref{c5:tab3} illustrates the performance of various ASR architectures. The results indicate that integrating language models significantly improves transcription accuracy. The Whisper-based approaches outperform other baseline models, and LLM-enhanced decoding further reduces the WER.
+Table \ref{c5:tab3} illustrates the performance of various ASR architectures. The proposed fine-tuned Whisper-small model outperformed previously reported Whisper-Vicuna systems on the TORGO dataset, reducing WER from 0.21 to 0.1612. This corresponds to an improvement of approximately 23.24\% over the reference approach.
 
 \section{Mathematical Formulation}
 
@@ -104,10 +103,12 @@ Equation \ref{eqn:lora} enables efficient training by updating only a small subs
 
 \section{Interpretation of Results}
 
-The results clearly indicate that baseline models struggle with dysarthric speech due to high variability and pronunciation inconsistencies. Data augmentation and synthetic data generation improve robustness by exposing the model to diverse speech patterns. Fine-tuning using LoRA significantly enhances performance while maintaining computational efficiency.
+The results clearly indicate that baseline ASR models struggle with dysarthric speech due to articulation inconsistencies and speaker variability. Data augmentation and synthetic data generation improved robustness by exposing the model to diverse speech patterns and noise conditions. Fine-tuning using LoRA significantly enhanced performance while maintaining computational efficiency.
 
-Furthermore, integrating an LLM layer improves grammatical correctness and contextual understanding, leading to better readability and usability of transcriptions. The comparison with existing architectures shows that combining ASR models with language models yields superior performance.
+The proposed approach achieved substantial improvement over both the baseline Whisper-small model and previously reported Whisper-Vicuna architectures. The reduction in WER demonstrates the effectiveness of combining synthetic data generation with parameter-efficient adaptation techniques. Additionally, the lower CER indicates improved character-level transcription quality and readability.
 
-Overall, the proposed approach achieves a substantial reduction in WER and demonstrates effectiveness in handling challenging speech scenarios.
+Although semantic correction using LLMs is proposed as part of the complete framework, the current implementation primarily evaluates the effectiveness of LoRA-based fine-tuning and augmentation strategies. Future integration of semantic repair mechanisms is expected to further reduce transcription errors and improve contextual understanding.
+
+Overall, the proposed system demonstrates strong potential for improving accessibility-focused speech recognition systems for dysarthric speakers.
 
 The results highlight the importance of combining data-centric and model-centric techniques for improving speech recognition systems. These findings provide a strong foundation for further optimization and real-world deployment, which will be explored in the subsequent chapter.

@@ -2,18 +2,30 @@
 
 The implementation integrates dataset preparation, augmentation, synthetic data generation, model fine-tuning, and post-processing into a unified pipeline for improving speech recognition on dysarthric speech. The process begins with establishing a baseline performance using a pre-trained model, followed by systematic data enrichment techniques to address variability and scarcity. Advanced augmentation and synthetic audio generation strategies are incorporated to enhance robustness across diverse speech patterns. The refined dataset is then used to fine-tune the model efficiently using parameter-efficient techniques. Finally, an intelligent language model layer is introduced to refine transcriptions and personalize outputs. The chapter concludes with evaluation insights demonstrating significant improvements in recognition accuracy.
 
-\section{Contents of this chapter}
-This chapter elaborates the following:
-\begin{enumerate}
-\item Implementation details for the hardware/software pipeline used in the project
-\item Top level design and workflow of the speech recognition enhancement system
-\end{enumerate}
-
 \section{System Overview}
 The system focuses on improving automatic speech recognition performance for dysarthric speech using a structured pipeline. The implementation is divided into five major components: baseline evaluation, data augmentation, synthetic data generation, model fine-tuning, and language model-based post-processing. Each component contributes to improving the robustness, accuracy, and usability of the system.
 
+\section{Experimental Environment Setup}
+
+The implementation and training experiments were conducted using cloud-based GPU environments to efficiently handle large-scale speech processing and model fine-tuning tasks.
+
+The primary development and training environment utilized Kaggle Notebooks with dual NVIDIA Tesla T4 GPUs, leveraging Kaggle’s free 30-hour GPU allocation for long-duration training sessions. Additional experiments and validation runs were performed using Google Colab with NVIDIA Tesla T4 GPUs.
+
+The software environment included:
+\begin{itemize}
+\item Python 3.10
+\item PyTorch
+\item Hugging Face Transformers
+\item PEFT (LoRA)
+\item Librosa
+\item NumPy and Pandas
+\item nlpaug for augmentation
+\end{itemize}
+
+The Whisper-small model was fine-tuned using mixed augmented and synthetic dysarthric speech datasets. Training sessions collectively exceeded 14 hours across multiple runs. Audio preprocessing and feature extraction were performed at a sampling rate of 16 kHz using Whisper-compatible log-Mel spectrogram representations.
+
 \section{Baseline Evaluation}
-The initial step involves evaluating the performance of the pre-trained Whisper-base model on the TORGO dataset. The evaluation metric used is Word Error Rate (WER), which quantifies transcription accuracy.
+The initial step involves evaluating the performance of the pre-trained Whisper-small model on the TORGO dataset. The evaluation metric used is Word Error Rate (WER), which quantifies transcription accuracy.
 
 The observed results are:
 \begin{itemize}
@@ -50,7 +62,7 @@ Key aspects include:
 A total of approximately 16,000 synthetic audio samples are generated, significantly increasing the training data volume and diversity.
 
 \section{Model Fine-Tuning}
-The Whisper-base model is fine-tuned using a parameter-efficient approach known as Low-Rank Adaptation (LoRA). This method allows efficient training by updating only a small subset of parameters.
+The Whisper-small model is fine-tuned using a parameter-efficient approach known as Low-Rank Adaptation (LoRA). This method allows efficient training by updating only a small subset of parameters.
 
 Key implementation details:
 \begin{itemize}
@@ -78,7 +90,7 @@ The overall system workflow can be described as a sequential pipeline:
 
 \begin{enumerate}
 \item Input Dataset (TORGO Dataset)
-\item Baseline Evaluation using Whisper-base
+\item Baseline Evaluation using Whisper-small
 \item Data Augmentation to increase variability
 \item Synthetic Data Generation for dataset expansion
 \item Dataset Integration and Preprocessing
@@ -99,7 +111,7 @@ This pipeline ensures systematic improvement at each stage, leading to better ge
 
 
 \section{Performance Evaluation}
-After fine-tuning and integrating the post-processing layer, the model is evaluated again on the TORGO dataset using WER as the primary metric. The improved model achieves a WER of less than 20\%, demonstrating a substantial improvement over the baseline.
+After fine-tuning and integrating the post-processing layer, the model is evaluated again on the TORGO dataset using WER as the primary metric. The improved model achieves a WER of 16.12\%, demonstrating a substantial improvement over the baseline.
 
 The reduction in WER, along with improved grammatical coherence and personalization, indicates enhanced recognition capability and overall system effectiveness.
 
